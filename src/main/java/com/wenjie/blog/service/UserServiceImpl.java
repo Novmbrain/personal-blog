@@ -4,6 +4,7 @@ import com.wenjie.blog.dao.UserRepository;
 import com.wenjie.blog.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 /**
  * @className: UserServiceImpl
@@ -19,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User checkUser(String userName, String password) {
-        User user = userRepository.findByUserNameAndPassword(userName, password);
+        User user = userRepository.findByUserNameAndPassword(userName, DigestUtils.md5DigestAsHex(password.getBytes()));
         return user;
     }
 }

@@ -40,7 +40,8 @@ public class LoginController {
             session.setAttribute("user", user);
             return "/admin/index";
         } else {
-            redirectAttributes.addFlashAttribute("messsga", "用户名和密码错误");
+            // 重定向不能够使用 model
+            redirectAttributes.addFlashAttribute("message", "用户名和密码错误");
             return "redirect:/admin";
         }
     }
