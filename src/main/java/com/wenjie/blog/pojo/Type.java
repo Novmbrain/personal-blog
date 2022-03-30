@@ -5,8 +5,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
+
 
 /**
  * @className: Type
@@ -23,6 +25,7 @@ public class Type {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "分类名称不能为空") // 在后端进行分类名称校验
     private String name;
 
     @OneToMany(mappedBy = "type")

@@ -30,7 +30,7 @@ public class ControllerExceptionHandler {
     public ModelAndView handleException(HttpServletRequest request, Exception e) throws Exception {
 
         logger.error("Request URL : {} , Exception : {}", request.getRequestURL(), e);
-        // 如果异常包含状态码，则将异常转交给 SpingBoot 自己处理，而不是让 hadleException 来处理
+        // 如果异常包含状态码，则将异常转交给 SpingBoot 自己处理，而不是让 handleException 来处理
         if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
             throw e;
         }

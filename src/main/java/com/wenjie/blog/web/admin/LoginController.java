@@ -25,6 +25,11 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/index")
+    private String index() {
+        return "/admin/index";
+    }
+
     @GetMapping
     public String loginPage() {
         return "/admin/login";
