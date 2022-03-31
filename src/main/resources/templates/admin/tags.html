@@ -49,7 +49,7 @@
       <div class="ui success message" th:unless="${#strings.isEmpty(message)}">
         <i class="close icon"></i>
         <div class="header">
-          提示：
+          Hint ：
         </div>
         <p th:text="${message}">恭喜，操作成功</p>
       </div>
@@ -67,8 +67,8 @@
             <td th:text="${iterStat.count}">1</td>
             <td th:text="${tag.name}">刻意练习清单</td>
             <td>
-              <a href="#" th:href="@{/admin/tags/{id}/input(id=${tag.id})}" class="ui mini teal basic button">编辑</a>
-              <a href="#" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" class="ui mini red basic button">删除</a>
+              <a href="#" th:href="@{/admin/tags/{id}/input(id=${tag.id})}" class="ui mini teal basic button">Edit</a>
+              <a href="#" th:href="@{/admin/tags/{id}/delete(id=${tag.id})}" class="ui mini red basic button">Delete</a>
             </td>
           </tr>
         </tbody>
@@ -76,10 +76,10 @@
           <tr>
             <th colspan="6">
               <div class="ui mini pagination menu" th:if="${page.totalPages}>1">
-                <a class=" item" th:href="@{/admin/tags(page=${page.number}-1)}" th:unless="${page.first}">上一页</a>
-                <a class=" item" th:href="@{/admin/tags(page=${page.number}+1)}" th:unless="${page.last}">下一页</a>
+                <a class=" item" th:href="@{/admin/tags(page=${page.number}-1)}" th:unless="${page.first}">Previous page</a>
+                <a class=" item" th:href="@{/admin/tags(page=${page.number}+1)}" th:unless="${page.last}">Next page</a>
               </div>
-              <a href="#" th:href="@{/admin/tags/input}" class="ui mini right floated teal basic button" >新增</a>
+              <a href="#" th:href="@{/admin/tags/input}" class="ui mini right floated teal basic button" >Create</a>
             </th>
           </tr>
         </tfoot>

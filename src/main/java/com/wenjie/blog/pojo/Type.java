@@ -25,7 +25,7 @@ public class Type {
     @Id
     @GeneratedValue
     private Long id;
-    @NotBlank(message = "分类名称不能为空") // 在后端进行分类名称校验
+    @NotBlank(message = "Type name cannot be empty") // 在后端进行分类名称校验
     private String name;
 
     @OneToMany(mappedBy = "type")

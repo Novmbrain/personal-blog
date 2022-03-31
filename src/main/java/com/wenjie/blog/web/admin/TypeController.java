@@ -66,7 +66,7 @@ public class TypeController {
     @GetMapping("/types/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes redirectAttributes) {
         typeService.deleteType(id);
-        redirectAttributes.addFlashAttribute("message", "删除成功");
+        redirectAttributes.addFlashAttribute("message", "Delete Successful");
         return "redirect:/admin/types";
     }
     /*当新增 type 时调用
@@ -76,7 +76,7 @@ public class TypeController {
     public String post(@Validated Type type, BindingResult result, RedirectAttributes redirectAttributes) {
         // 进行后端 type name 重复验证
         if (typeService.getTypeByName(type.getName()) != null) {
-            result.rejectValue("name", "nameError", "不能添加重复的分类");
+            result.rejectValue("name", "nameError", "No duplicate categories can be added");
         }
 
         // 进行后端 name 非空校验
@@ -86,9 +86,9 @@ public class TypeController {
 
         Type t = typeService.saveType(type);
         if (t == null) {
-            redirectAttributes.addFlashAttribute("message", "新增失败");
+            redirectAttributes.addFlashAttribute("message", "Add Failed");
         } else {
-            redirectAttributes.addFlashAttribute("message", "新增成功");
+            redirectAttributes.addFlashAttribute("message", "Add Successful");
         }
         return "redirect:/admin/types";
     }
@@ -98,7 +98,7 @@ public class TypeController {
     public String editPost(Type type, BindingResult result, @PathVariable Long id, RedirectAttributes redirectAttributes) {
         // 进行后端 type name 重复验证
         if (typeService.getTypeByName(type.getName()) != null) {
-            result.rejectValue("name", "nameError", "不能添加重复的分类");
+            result.rejectValue("name", "nameError", "No duplicate categories can be added");
         }
 
         // 进行后端 name 非空校验
@@ -108,9 +108,9 @@ public class TypeController {
 
         Type t = typeService.updateType(id, type);
         if (t == null) {
-            redirectAttributes.addFlashAttribute("message", "更新失败");
+            redirectAttributes.addFlashAttribute("message", "Update Failed");
         } else {
-            redirectAttributes.addFlashAttribute("message", "更新成功");
+            redirectAttributes.addFlashAttribute("message", "Update Successful");
         }
         return "redirect:/admin/types";
     }

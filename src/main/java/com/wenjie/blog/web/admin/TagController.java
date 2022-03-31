@@ -62,19 +62,19 @@ public class TagController {
     @GetMapping("/tags/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes redirectAttributes) {
         tagService.deleteTag(id);
-        redirectAttributes.addFlashAttribute("message", "删除成功");
+        redirectAttributes.addFlashAttribute("message", "Delete successful");
         return "redirect:/admin/tags";
     }
 
 
-    /*当新增 type 时调用
-    * BindingResult 和 type 一定要挨着
+    /*当新增 tag 时调用
+    * BindingResult 和 tag 一定要挨着
     * */
     @PostMapping("/tags")
     public String post(@Validated Tag tag, BindingResult result, RedirectAttributes redirectAttributes) {
-        // 进行后端 type name 重复验证
+        // 进行后端 tag name 重复验证
         if (tagService.getTagByName(tag.getName()) != null) {
-            result.rejectValue("name", "nameError", "不能添加重复的标签");
+            result.rejectValue("name", "nameError", "No duplicate categories can be added");
         }
 
         // 进行后端 name 非空校验
@@ -84,9 +84,9 @@ public class TagController {
 
         Tag t = tagService.saveTag(tag);
         if (t == null) {
-            redirectAttributes.addFlashAttribute("message", "新增失败");
+            redirectAttributes.addFlashAttribute("message", "Add Failed");
         } else {
-            redirectAttributes.addFlashAttribute("message", "新增成功");
+            redirectAttributes.addFlashAttribute("message", "Add Successful");
         }
         return "redirect:/admin/tags";
     }
@@ -96,7 +96,7 @@ public class TagController {
     public String editPost(Tag tag, BindingResult result, @PathVariable Long id, RedirectAttributes redirectAttributes) {
         // 进行后端 tag name 重复验证
         if (tagService.getTagByName(tag.getName()) != null) {
-            result.rejectValue("name", "nameError", "不能添加重复的分类");
+            result.rejectValue("name", "nameError", "No duplicate categories can be added");
         }
 
         // 进行后端 name 非空校验
@@ -106,9 +106,9 @@ public class TagController {
 
         Tag t = tagService.updateTag(id, tag);
         if (t == null) {
-            redirectAttributes.addFlashAttribute("message", "更新失败");
+            redirectAttributes.addFlashAttribute("message", "Update Failed");
         } else {
-            redirectAttributes.addFlashAttribute("message", "更新成功");
+            redirectAttributes.addFlashAttribute("message", "Update Successful");
         }
         return "redirect:/admin/tags";
     }

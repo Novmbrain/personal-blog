@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class Tag {
     @Id
     @GeneratedValue
     private Long id;
+    @NotBlank(message = "Tag name cannot be empty")
     private String name;
 
     @ManyToMany(mappedBy = "tags")
