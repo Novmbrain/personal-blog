@@ -48,7 +48,7 @@ public class TagServiceImpl implements TagService {
     public Tag updateTag(Long id, Tag tag) {
         Tag t = tagRepository.getById(id);
         if (t == null) {
-            throw new NotFoundException("不存在类型");
+            throw new NotFoundException("This tag doesn't exist");
         }
         BeanUtils.copyProperties(tag, t);
         return tagRepository.save(t);

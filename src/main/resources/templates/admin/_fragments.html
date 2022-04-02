@@ -29,8 +29,8 @@
             <div class="right m-item m-mobile-hide menu">
                 <div class="ui dropdown  item">
                     <div class="text">
-                        <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005">
-                        Wenjie FU
+                        <img class="ui avatar image" src="https://unsplash.it/100/100?image=1005" th:src="@{${session.user.avatar}}">
+                        <span th:text="${session.user.nickName}">Wenjie FU</span>
                     </div>
                     <i class="dropdown icon"></i>
                     <div class="menu">
